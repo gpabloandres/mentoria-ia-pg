@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flujo de Trabajo Profesional con IA | Mentoría con Pablo Gay</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            900: '#312e81',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Estilos optimizados para exportar a PDF via Window.print() */
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            body {
+                background: white !important;
+                color: black !important;
+                font-size: 12pt;
+            }
+            .page-break {
+                page-break-before: always;
+            }
+            .card-print {
+                border: 1px solid #e2e8f0 !important;
+                box-shadow: none !important;
+                break-inside: avoid;
+            }
+            .gradient-bg {
+                background: #4f46e5 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(229, 231, 235, 0.8);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- Barra Flotante de Acciones (Oculta en Impresión) -->
+    <div class="no-print fixed bottom-6 right-6 z-50 flex flex-col gap-3">
+        <button onclick="downloadPDF()" title="Descargar Ficha en PDF" class="flex items-center gap-2 bg-slate-900 text-white font-medium px-5 py-3 rounded-full shadow-xl hover:bg-slate-800 transition transform hover:-translate-y-1 active:translate-y-0">
+            <i class="fa-solid fa-file-pdf text-red-400 text-lg"></i>
+            <span class="text-sm font-semibold">Descargar PDF</span>
+        </button>
+        
+        <a href="#contacto" class="flex items-center justify-center gap-2 bg-emerald-600 text-white font-medium px-5 py-3 rounded-full shadow-xl hover:bg-emerald-500 transition transform hover:-translate-y-1 active:translate-y-0">
+            <i class="fa-brands fa-whatsapp text-xl"></i>
+            <span class="text-sm font-semibold">Inscribirme</span>
+        </a>
+    </div>
+
+    <!-- Encabezado / Navbar -->
+    <header class="no-print sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-slate-200">
+        <div class="max-w-5xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-brand-600 flex items-center justify-center text-white font-bold text-xl shadow-md">
+                    PG
+                </div>
+                <div>
+                    <span class="font-bold text-slate-900 leading-tight block">Pablo Andrés Gay</span>
+                    <span class="text-xs text-slate-500 font-medium">Consultor & Mentor en IA</span>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-3">
+                <button onclick="downloadPDF()" class="hidden md:flex items-center gap-2 text-slate-600 hover:text-brand-600 font-medium text-sm px-3 py-1.5 rounded-lg transition">
+                    <i class="fa-solid fa-download"></i> PDF
+                </button>
+                <a href="#contacto" class="bg-brand-600 text-white hover:bg-brand-700 font-medium text-sm px-4 py-2 rounded-xl transition shadow-sm">
+                    Cohorte Piloto
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-12 pb-16 md:pt-20 md:pb-24 px-4 overflow-hidden bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#6366f1_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <div class="inline-flex items-center gap-2 bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-4 py-1.5 rounded-full text-xs md:text-sm font-semibold uppercase tracking-wider mb-6">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                🚀 Exclusivo Cohorte Piloto | Cupos Limitados (Máx. 5 personas)
+            </div>
+            
+            <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-tight mb-6">
+                Flujo de Trabajo Profesional con <span class="bg-gradient-to-r from-indigo-400 via-sky-300 to-emerald-400 bg-clip-text text-transparent">Inteligencia Artificial</span>
+            </h1>
+            
+            <p class="text-lg md:text-xl text-slate-300 font-light max-w-2xl mx-auto mb-8 leading-relaxed">
+                De la saturación de información a tu propio sistema de asistentes digitales con el ecosistema seguro de Google: <strong class="text-white font-semibold">NotebookLM, Gemini y Gems</strong>.
+            </p>
+            
+            <!-- Highlights rápida -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto mb-10 text-left">
+                <div class="bg-white/5 border border-white/10 p-3.5 rounded-2xl">
+                    <div class="text-indigo-400 text-lg mb-1"><i class="fa-solid fa-clock"></i></div>
+                    <div class="text-xs text-slate-400">Duración</div>
+                    <div class="text-sm font-semibold text-white">4 Semanas (100% en Vivo)</div>
+                </div>
+                <div class="bg-white/5 border border-white/10 p-3.5 rounded-2xl">
+                    <div class="text-emerald-400 text-lg mb-1"><i class="fa-solid fa-users"></i></div>
+                    <div class="text-xs text-slate-400">Formato</div>
+                    <div class="text-sm font-semibold text-white">Grupo Reducido (5 pers)</div>
+                </div>
+                <div class="bg-white/5 border border-white/10 p-3.5 rounded-2xl">
+                    <div class="text-amber-400 text-lg mb-1"><i class="fa-solid fa-brain"></i></div>
+                    <div class="text-xs text-slate-400">Metodología</div>
+                    <div class="text-sm font-semibold text-white">RAG + Agentes + Prompts</div>
+                </div>
+                <div class="bg-white/5 border border-white/10 p-3.5 rounded-2xl">
+                    <div class="text-sky-400 text-lg mb-1"><i class="fa-solid fa-calendar-alt"></i></div>
+                    <div class="text-xs text-slate-400">Horarios</div>
+                    <div class="text-sm font-semibold text-white">A convenir en grupo</div>
+                </div>
+            </div>
+
+            <div class="no-print flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#contacto" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-8 py-4 rounded-2xl shadow-lg transition transform hover:-translate-y-0.5 text-center">
+                    🔥 Reservar mi Lugar en la Cohorte
+                </a>
+                <button onclick="downloadPDF()" class="bg-white/10 hover:bg-white/20 text-white font-medium px-6 py-4 rounded-2xl border border-white/20 transition flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-file-pdf"></i> Ficha del Programa en PDF
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problema vs Solución -->
+    <section class="py-16 px-4 max-w-5xl mx-auto">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+            <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-3">
+                ¿Sientes que la IA va más rápido de lo que puedes implementar?
+            </h2>
+            <p class="text-slate-600">
+                La mayoría de los profesionales pierden horas probando prompts sueltos. Esta mentoría te da un <strong>método estructurado</strong> para integrarla a tu día a día.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+            <!-- Sin método -->
+            <div class="p-6 rounded-3xl bg-red-50/50 border border-red-100 card-print">
+                <div class="flex items-center gap-3 mb-4 text-red-600 font-bold">
+                    <span class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center"><i class="fa-solid fa-xmark"></i></span>
+                    Sin un Flujo de Trabajo
+                </div>
+                <ul class="space-y-3 text-slate-700 text-sm">
+                    <li class="flex items-start gap-2">
+                        <i class="fa-solid fa-minus text-red-400 mt-1"></i>
+                        <span>ChatGPT te da respuestas genéricas y alucinaciones no verifadas.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i class="fa-solid fa-minus text-red-400 mt-1"></i>
+                        <span>Tenés que copiar y pegar contexto una y otra vez.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i class="fa-solid fa-minus text-red-400 mt-1"></i>
+                        <span>Archivos desordenados y pérdida de tiempo en resumir documentos largos.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Con nuestro método -->
+            <div class="p-6 rounded-3xl bg-emerald-50/50 border border-emerald-100 card-print">
+                <div class="flex items-center gap-3 mb-4 text-emerald-700 font-bold">
+                    <span class="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center"><i class="fa-solid fa-check"></i></span>
+                    Con el Flujo de Google + IA
+                </div>
+                <ul class="space-y-3 text-slate-700 text-sm">
+                    <li class="flex items-start gap-2">
+                        <i class="fa-solid fa-check text-emerald-500 mt-1"></i>
+                        <span><strong>NotebookLM:</strong> Base de conocimiento privada con tus propios documentos, normativas y libros (cero alucinaciones).</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i class="fa-solid fa-check text-emerald-500 mt-1"></i>
+                        <span><strong>Gemini:</strong> Desarrollo de informes, propuestas, proyectos y materiales complejos con contexto estructurado.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i class="fa-solid fa-check text-emerald-500 mt-1"></i>
+                        <span><strong>Gems:</strong> Tus propios asistentes automatizados configurados a un clic para tareas repetitivas.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programa de 4 Semanas -->
+    <section class="py-16 bg-white border-y border-slate-200 px-4">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-brand-600 font-bold text-sm tracking-wider uppercase">Paso a Paso</span>
+                <h2 class="text-3xl font-extrabold text-slate-900 mt-1">Programa de la Mentoría (4 Módulos)</h2>
+                <p class="text-slate-600 mt-2">Práctico, directo al grano y enfocado en resolver tus casos reales.</p>
+            </div>
+
+            <div class="grid gap-6">
+                <!-- Módulo 1 -->
+                <div class="p-6 rounded-2xl border border-slate-200 hover:border-brand-300 transition glass-card card-print">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-3">
+                        <div class="flex items-center gap-3">
+                            <span class="bg-brand-100 text-brand-700 font-bold text-xs px-3 py-1 rounded-full">SEMANA 1</span>
+                            <h3 class="text-lg font-bold text-slate-900">Base de Conocimiento Centralizada (RAG con NotebookLM)</h3>
+                        </div>
+                        <span class="text-xs font-semibold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-md w-max">📚 Curaduría y Datos</span>
+                    </div>
+                    <p class="text-slate-600 text-sm mb-4">
+                        Aprenderás a crear un "cerebro digital" con tus normativas, investigaciones, notas o PDF institucionales para consultar información veraz de inmediato.
+                    </p>
+                    <div class="flex flex-wrap gap-2 text-xs font-medium text-slate-500">
+                        <span class="bg-slate-100 px-2.5 py-1 rounded">Carga de Documentos</span>
+                        <span class="bg-slate-100 px-2.5 py-1 rounded">Síntesis Inteligente</span>
+                        <span class="bg-slate-100 px-2.5 py-1 rounded">Podcast/Resúmenes de Audio</span>
+                        <span class="bg-slate-100 px-2.5 py-1 rounded">Citas Exactas</span>
+                    </div>
+                </div>
+
+                <!-- Módulo 2 -->
+                <div class="p-6 rounded-2xl border border-slate-200 hover:border-brand-300 transition glass-card card-print">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-3">
+                        <div class="flex items-center gap-3">
+                            <span class="bg-brand-100 text-brand-700 font-bold text-xs px-3 py-1 rounded-full">SEMANA 2</span>
+                            <h3 class="text-lg font-bold text-slate-900">Ingeniería de Prompts y Pensamiento Estratégico (Gemini)</h3>
+                        </div>
+                        <span class="text-xs font-semibold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-md w-max">💡 Estrategia e Ideas</span>
+                    </div>
+                    <p class="text-slate-600 text-sm mb-4">
+                        Dominarás las técnicas de prompting profesional para redactar propuestas, estructurar proyectos, analizar escenarios y potenciar tu comunicación con Gemini.
+                    </p>
+                    <div class="flex flex-wrap gap-2 text-xs font-medium text-slate-500">
+                        <span class="bg-slate-100 px-2.5 py-1 rounded">Frameworks de Prompts</span>
+                        <span class="bg-slate-100 px-2.5 py-1 rounded">Roleplaying Avanzado</span>
+                        <span class="bg-slate-100 px-2.5 py-1 rounded">Redacción de Informes</span>
+                    </div>
+                </div>
+
+                <!-- Módulo 3 -->
+                <div class="p-6 rounded-2xl border border-slate-200 hover:border-brand-300 transition glass-card card-print">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-3">
+                        <div class="flex items-center gap-3">
+                            <span class="bg-brand-100 text-brand-700 font-bold text-xs px-3 py-1 rounded-full">SEMANA 3</span>
+                            <h3 class="text-lg font-bold text-slate-900">Creación de Asistentes Automatizados (Gems)</h3>
+                        </div>
+                        <span class="text-xs font-semibold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-md w-max">🤖 Automatización</span>
+                    </div>
+                    <p class="text-slate-600 text-sm mb-4">
+                        Diseñarás "Gems" (micro-agentes especializados) preprogramados con tus reglas, tono de voz y criterios para ejecutar tareas recurrentes en segundos.
+                    </p>
+                    <div class="flex flex-wrap gap-2 text-xs font-medium text-slate-500">
+                        <span class="bg-slate-100 px-2.5 py-1 rounded">Configuración de Gems</span>
+                        <span class="bg-slate-100 px-2.5 py-1 rounded">System Prompts</span>
+                        <span class="bg-slate-100 px-2.5 py-1 rounded">Asistentes Temáticos</span>
+                    </div>
+                </div>
+
+                <!-- Módulo 4 -->
+                <div class="p-6 rounded-2xl border border-slate-200 hover:border-brand-300 transition glass-card card-print">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-3">
+                        <div class="flex items-center gap-3">
+                            <span class="bg-brand-100 text-brand-700 font-bold text-xs px-3 py-1 rounded-full">SEMANA 4</span>
+                            <h3 class="text-lg font-bold text-slate-900">Integración de Flujo Completo y Proyecto Práctico</h3>
+                        </div>
+                        <span class="text-xs font-semibold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-md w-max">🎯 Implementación</span>
+                    </div>
+                    <p class="text-slate-600 text-sm mb-4">
+                        Unirás las tres herramientas en un caso de uso real de tu profesión o empresa. Saldrás del programa con tu sistema de IA funcionando y optimizado.
+                    </p>
+                    <div class="flex flex-wrap gap-2 text-xs font-medium text-slate-500">
+                        <span class="bg-slate-100 px-2.5 py-1 rounded">Caso Real del Alumno</span>
+                        <span class="bg-slate-100 px-2.5 py-1 rounded">Feedback 1 a 1</span>
+                        <span class="bg-slate-100 px-2.5 py-1 rounded">Optimización de Tiempos</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre el Mentor -->
+    <section class="py-16 px-4 max-w-5xl mx-auto">
+        <div class="bg-slate-900 rounded-3xl p-8 md:p-12 text-white relative overflow-hidden card-print">
+            <div class="grid md:grid-cols-3 gap-8 items-center relative z-10">
+                <div class="text-center md:text-left">
+                    <div class="w-28 h-28 mx-auto md:mx-0 rounded-2xl bg-indigo-600 flex items-center justify-center text-4xl font-extrabold shadow-2xl mb-4 border-2 border-indigo-400">
+                        PG
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Pablo Andrés Gay</h3>
+                    <p class="text-indigo-300 text-xs mt-1">Especialista en IA, IoT & Educación Técnica</p>
+                    <p class="text-slate-400 text-xs">Tierra del Fuego, Argentina</p>
+                </div>
+                
+                <div class="md:col-span-2 space-y-4 text-slate-300 text-sm leading-relaxed">
+                    <h4 class="text-lg font-semibold text-white">¿Quién será tu mentor?</h4>
+                    <p>
+                        Con más de 17 años de trayectoria en el sector tecnológico, coordinación de proyectos de sistemas y docencia técnica, me dedico a conectar la complejidad técnica con soluciones prácticas y pedagógicas.
+                    </p>
+                    <p>
+                        Cuento con formación especializada en **IA & Agentes**, **RAG/LLMs (Microsoft Reactor)** y **Alfabetización en IA (EsencIA)**, lo que me permite enseñarte no solo a usar una herramienta, sino a integrar la IA con criterio, seguridad y eficiencia.
+                    </p>
+                    <div class="pt-2 flex flex-wrap gap-4 text-xs font-semibold text-indigo-300">
+                        <span><i class="fa-solid fa-check text-emerald-400 mr-1"></i> +17 Años de Experiencia</span>
+                        <span><i class="fa-solid fa-check text-emerald-400 mr-1"></i> Project Manager</span>
+                        <span><i class="fa-solid fa-check text-emerald-400 mr-1"></i> Enfoque Pedagógico Práctico</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Inversión y Formulario de Contacto -->
+    <section id="contacto" class="py-16 bg-slate-100 px-4">
+        <div class="max-w-3xl mx-auto text-center">
+            <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                Lanzamiento Exclusivo
+            </span>
+            <h2 class="text-3xl font-extrabold text-slate-900 mt-3 mb-2">Reserva tu Vacante en la Cohorte Piloto</h2>
+            <p class="text-slate-600 mb-8 text-sm">
+                Al ser un grupo reducido de máximo 5 profesionales, garantizamos interacción directa y adaptación a tus necesidades.
+            </p>
+
+            <div class="bg-white rounded-3xl p-8 shadow-xl border border-slate-200 mb-8 card-print">
+                <div class="inline-block bg-brand-50 text-brand-700 text-xs font-bold px-3 py-1 rounded-full mb-4">
+                    Inversión Promocional
+                </div>
+                
+                <div class="flex items-center justify-center gap-2 mb-2">
+                    <span class="text-4xl md:text-5xl font-black text-slate-900">$95.000</span>
+                    <span class="text-slate-500 font-medium text-sm">ARS</span>
+                </div>
+                <p class="text-xs text-slate-500 mb-6">Pago único o 2 cuotas de $50.000 ARS (Transferencia / MercadoPago)</p>
+
+                <div class="text-left space-y-3 mb-8 border-t border-slate-100 pt-6 text-sm text-slate-700 max-w-md mx-auto">
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-circle-check text-emerald-500"></i>
+                        <span>4 Encuentros en vivo de 90 min via Zoom</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-circle-check text-emerald-500"></i>
+                        <span>Grupo exclusivo de soporte continuo en WhatsApp</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-circle-check text-emerald-500"></i>
+                        <span>Plantillas y Prompts listos para usar</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i class="fa-solid fa-circle-check text-emerald-500"></i>
+                        <span>Encuesta en el grupo para elegir el mejor horario</span>
+                    </div>
+                </div>
+
+                <div class="no-print space-y-4">
+                    <a id="wa-button" href="https://wa.me/549290140001?text=Hola%20Pablo,%20me%20interesa%20sumarme%20a%20la%20Cohorte%20Piloto%20de%20IA%20Profesional." target="_blank" class="block w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-4 rounded-2xl shadow-lg transition transform hover:-translate-y-0.5 text-center text-base">
+                        <i class="fa-brands fa-whatsapp text-xl mr-2"></i> Unirme al Grupo de Interesados por WhatsApp
+                    </a>
+                    <p class="text-xs text-slate-400">
+                        Te sumaremos al grupo privado donde coordinaremos los días/horarios mediante encuesta.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-8 px-4 text-center text-xs">
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <div>
+                <p class="font-semibold text-slate-300">Pablo Andrés Gay — Mentoría & Consultoría en IA</p>
+                <p class="mt-1">Tierra del Fuego, Argentina</p>
+            </div>
+            <div class="flex gap-4">
+                <a href="https://linktr.ee/gpabloandres" target="_blank" class="hover:text-white transition"><i class="fa-solid fa-link"></i> Linktree</a>
+                <a href="mailto:gpabloandres@gmail.com" class="hover:text-white transition"><i class="fa-solid fa-envelope"></i> Email</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Función para activar la descarga/impresión a PDF limpia
+        function downloadPDF() {
+            window.print();
+        }
+
+        // Suavizar scroll de navegación
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
